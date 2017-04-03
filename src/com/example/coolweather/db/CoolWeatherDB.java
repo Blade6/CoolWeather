@@ -90,7 +90,7 @@ public class CoolWeatherDB {
 		if (county != null) {
 			ContentValues values = new ContentValues();
 			values.put("county_name", county.getCountyName());
-			values.put("county_code", county.getcountyCode());
+			values.put("county_code", county.getCountyCode());
 			values.put("city_code", county.getCityCode());
 			db.insert("County", null, values);
 		}

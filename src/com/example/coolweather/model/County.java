@@ -23,7 +23,7 @@ public class County {
 		this.countyName = countyName;
 	}
 	
-	public String getcountyCode() {
+	public String getCountyCode() {
 		return countyCode;
 	}
 	
