@@ -19,7 +19,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class WeatherActivity extends Activity {
+public class WeatherActivity extends Activity implements OnClickListener{
 	
 	private LinearLayout weatherInfoLayout;
 	/**
@@ -63,8 +63,8 @@ public class WeatherActivity extends Activity {
 		weatherDespText = (TextView) findViewById(R.id.weather_desp);
 		tempText = (TextView) findViewById(R.id.temperature);
 		currentDateText = (TextView) findViewById(R.id.current_date);
-		//switchCity = (Button) findViewById(R.id.switch_city);
-		//refreshWeather = (Button) findViewById(R.id.refresh_weather);
+		switchCity = (Button) findViewById(R.id.switch_city);
+		refreshWeather = (Button) findViewById(R.id.refresh_weather);
 		String countyCode = getIntent().getStringExtra("county_code");
 		if (!TextUtils.isEmpty(countyCode)) {
 			// 有县级代号时就去查询天气
@@ -76,10 +76,10 @@ public class WeatherActivity extends Activity {
 			// 没有县级代号时就直接显示本地天气
 			showWeather();
 		}
-		//switchCity.setOnClickListener(this);
-		//refreshWeather.setOnClickListener(this);
+		switchCity.setOnClickListener(this);
+		refreshWeather.setOnClickListener(this);
 	}
-/*	
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -90,19 +90,19 @@ public class WeatherActivity extends Activity {
 			finish();
 			break;
 		case R.id.refresh_weather:
-			publishText.setText("同步中...");
-			SharedPreferences prefs = PreferenceManager.
-					getDefaultSharedPreferences(this);
-			String weatherCode = prefs.getString("weather_code", "");
-			if (!TextUtils.isEmpty(weatherCode)) {
-				queryWeatherInfo(weather);
+			lastUpdateText.setText("同步中...");
+			String countyCode = getIntent().getStringExtra("county_code");
+			if (!TextUtils.isEmpty(countyCode)) {
+				// 有县级代号时就去查询天气
+				lastUpdateText.setText("同步中...");
+				queryWeatherInfo(countyCode);
 			}
 			break;
 		default:
 			break;
 		}		
 	}
-*/		
+		
 	/**
 	 * 根据县级代号查询天气。
 	 */
