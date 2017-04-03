@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="14"
-        android:targetSdkVersion="21" />
+        android:targetSdkVersion="21" /> 
     
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -25,6 +25,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.coolweather.activity.WeatherActivity"></activity>
+        <service android:name="com.example.coolweather.service.AutoUpdateService"></service>
+        <receiver android:name="com.example.coolweather.receiver.AutoUpdateReceiver"></receiver>
     </application>
 
 </manifest>
